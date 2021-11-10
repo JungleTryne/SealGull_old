@@ -7,7 +7,7 @@ Check `LICENSE.md` first! It's closed source bot.
 0) Create and activate new virtual enviroment
 1) `pip3 install -r requirements.txt`
 2) Add bot token into `SEALGULL_TOKEN` env variable
-3) Launch the bot: `python3 main.py`
+3) Launch the bot: `python3 sealgull/main.py`
 
 ### How to contribute?
 
