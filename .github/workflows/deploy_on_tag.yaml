@@ -1,0 +1,48 @@
+name: "Deploy on tag"
+on:
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  run_tests:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: coverage run tests/test_basic.py
+      - name: Tests report
+        run: coverage report
+      - name: Install flake8
+        run: pip install flake8
+      - name: Run flake8
+        uses: suo/flake8-github-action@releases/v1
+        with:
+          checkName: 'run_tests'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    deploy:
+      runs_on: [ubuntu-latest]
+      steps:
+      - name: sync
+        env:
+          dest: 'jungletryne@130.193.40.19:/home/jungletryne/Sealgull'
+        run: |
+          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+          chmod 600 ./deploy_key
+          rsync -chav --delete \
+            -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
+            --exclude /deploy_key \
+            --exclude /.git/ \
+            --exclude /.github/ \
+            ./ ${{env.dest}}
+
