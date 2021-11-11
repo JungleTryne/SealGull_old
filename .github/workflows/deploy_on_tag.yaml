@@ -49,6 +49,5 @@ jobs:
         key: ${{ secrets.DEPLOY_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /home/jungletryne/SealGull
-          ./scripts/update_docker.sh
-          ./scripts/deploy
+          /home/jungletryne/SealGull/scripts/update_docker.sh
+          /home/jungletryne/SealGull/scripts/deploy.sh
