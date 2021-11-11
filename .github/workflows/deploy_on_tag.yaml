@@ -1,8 +1,5 @@
 name: "Deploy on tag"
 on:
-  pull_request:
-    branches:
-      - 'master'
   push:
     tags:
       - "v*.*.*"
@@ -37,7 +34,7 @@ jobs:
     - uses: actions/checkout@master
     - name: sync
       env:
-        dest: 'jungletryne@130.193.40.19:/home/jungletryne/Sealgull'
+        dest: 'jungletryne@130.193.40.19:/home/jungletryne/SealGull'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         chmod 600 ./deploy_key
