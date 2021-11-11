@@ -44,4 +44,14 @@ jobs:
           --exclude /.git/ \
           --exclude /.github/ \
           ./ ${{env.dest}}
-
+    - name: update docker image and restart
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.DEPLOY_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/jungletryne/SealGull
+          ./scripts/update_docker.sh
+          ./scripts/deploy
