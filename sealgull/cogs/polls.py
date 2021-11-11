@@ -31,14 +31,18 @@ class Polls(commands.Cog):
     @commands.command()
     async def suggest(self, ctx: commands.Context, *, proposition: str):
         await ctx.message.delete()
-        message = await ctx.send(f"{ctx.author.name} suggested the following: \n{proposition}")
+        message = await ctx.send(
+            f"{ctx.author.name} suggested the following: \n{proposition}"
+        )
         for emoji in self.emojis:
             await message.add_reaction(emoji)
 
     @suggest.error
     async def suggest_handler(self, ctx: commands.Context, what):
         logger.error(what)
-        await ctx.send("Couldn't make a suggestion because of an internal error")
+        await ctx.send(
+            "Couldn't make a suggestion because of an internal error"
+        )
 
 
 def setup(bot: SealgullClient, args):

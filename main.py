@@ -8,8 +8,21 @@ from sealgull.cogs import polls
 
 def parse_arguments():
     parser = argparse.ArgumentParser("Sealgull bot")
-    parser.add_argument("--prefix", dest="command_prefix", default="!", help="Commands prefix for the bot")
-    parser.add_argument("--log_level", dest="log_level", default="INFO", help="Logging level")
+
+    parser.add_argument(
+        "--prefix",
+        dest="command_prefix",
+        default="!",
+        help="Commands prefix for the bot"
+    )
+
+    parser.add_argument(
+        "--log_level",
+        dest="log_level",
+        default="INFO",
+        help="Logging level"
+    )
+
     return parser.parse_args()
 
 
