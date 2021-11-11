@@ -7,7 +7,6 @@ fi
 
 # updating docker image
 
-sudo docker rm sealgull
+sudo docker build --tag sealgull .
 yes | sudo docker image prune
 yes | sudo docker container prune
-sudo docker build --tag sealgull .

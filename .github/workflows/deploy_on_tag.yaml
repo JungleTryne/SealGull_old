@@ -35,7 +35,7 @@ jobs:
     - name: sync
       uses: burnett01/rsync-deployments@5.1
       with:
-        switches: -avzr --delete --exclude="__pycache__" --exclude=".git/" --exclude=".github/"
+        switches: -avzr --delete --exclude="__pycache__" --exclude=".git/" --exclude=".github/" --exclude=".env"
         path: /
         remote_path: /home/jungletryne/SealGull/
         remote_host: ${{ secrets.HOST }}
@@ -49,5 +49,6 @@ jobs:
         key: ${{ secrets.DEPLOY_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          /home/jungletryne/SealGull/scripts/update_docker.sh
-          /home/jungletryne/SealGull/scripts/deploy.sh
+          cd /home/jungletryne/SealGull
+          ./scripts/update_docker.sh
+          ./scripts/deploy.sh
