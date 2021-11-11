@@ -2,8 +2,8 @@ import argparse
 import logging
 import os
 
-from sealgull.client import SealgullClient
-from sealgull.cogs import polls
+from client import SealgullClient
+from cogs import polls
 
 
 def parse_arguments():

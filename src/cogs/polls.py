@@ -1,6 +1,6 @@
 import logging
 
-from sealgull.client import SealgullClient
+from client import SealgullClient
 from discord.ext import commands
 
 
