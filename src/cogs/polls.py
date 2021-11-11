@@ -32,7 +32,7 @@ class Polls(commands.Cog):
     async def suggest(self, ctx: commands.Context, *, proposition: str):
         await ctx.message.delete()
         message = await ctx.send(
-            f"{ctx.author.name} suggested the following: \n{proposition}"
+            f"{ctx.author.name} suggested: \n{proposition}"
         )
         for emoji in self.emojis:
             await message.add_reaction(emoji)
