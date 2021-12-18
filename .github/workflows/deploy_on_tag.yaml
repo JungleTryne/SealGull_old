@@ -1,8 +1,8 @@
 name: "Deploy on tag"
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - 'master'
 jobs:
   run_tests:
     runs-on: [ubuntu-latest]
@@ -50,5 +50,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /home/jungletryne/SealGull/scripts
-          ./setup_env.sh
+          source ./setup_env.sh
           ./start.sh
