@@ -23,4 +23,4 @@ source ~/venvs/$SEALGULL_ENV_NAME/bin/activate
 cd ~/SealGull/
 pip3 install -r requirements.txt
 
-cd ~/SealGull/script
+cd ~/SealGull/scripts
