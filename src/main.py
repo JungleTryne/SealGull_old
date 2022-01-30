@@ -4,7 +4,7 @@ import logging
 import os
 
 from client import SealgullClient
-from cogs import polls
+from cogs import polls, youtube_player
 
 
 def parse_arguments():
@@ -61,7 +61,8 @@ def main(bot_args):
     bot = SealgullClient(bot_args)
 
     modules = [
-        polls
+        polls,
+        youtube_player
     ]
 
     for module in modules:
