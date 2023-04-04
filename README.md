@@ -1,7 +1,5 @@
 # Sealgull Discord Bot
 
-Check `LICENSE.md` first! It's closed source bot.
-
 ### How to install?
 
 0) Create and activate new virtual enviroment
